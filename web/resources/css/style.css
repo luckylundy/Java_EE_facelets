@@ -1,0 +1,29 @@
+body{font-family: メイリオ,Okasa}
+
+h2{font-size: 1.8em}
+
+.title{
+    font-size:2.0em;
+    color: blue;
+}
+
+.head{
+    background-color: #CCFFFF;
+    color: blue;
+}
+
+.col1{
+    width: 300px;
+    background-color: #FFEEFF;
+    color: #800080;
+}
+
+.col2{
+    width: 1000px;
+    background-color: #CBFFD3;
+    color: #005500;
+}
+
+.err{
+    color: deeppink;
+}

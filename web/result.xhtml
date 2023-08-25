@@ -1,0 +1,98 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+    <h:head>
+        <title>TK_Ex_MSR_Shopping</title>
+        <h:outputStylesheet library="css" name="style.css" />
+    </h:head>
+    <h:body>
+        Hello from Facelets
+        
+        <h:panelGrid columns="2" cellspacing="0" rules="all" border="1"
+                     headerClass="head" columnClasses="col1, col2">
+            
+            <f:facet name="header">お客様情報</f:facet>
+            
+            <h:outputLabel value="名前：" />
+            <h:outputText value="#{custInfo.name}" />
+            
+            <h:outputLabel value="住所：" />
+            <h:outputText value="#{custInfo.adsValue}" />
+
+            <h:outputLabel value="性別：" />
+            <h:outputText value="#{custInfo.genderValue}" />
+
+            <h:outputLabel value="血液型：" />
+            <h:outputText value="#{custInfo.b_type}" />
+
+            <h:outputLabel value="電話番号：" />
+            <h:outputText value="#{custInfo.phone}" />
+            
+            <h:outputLabel value="生年月日：" />
+            <h:outputText value="#{custInfo.b_date}">
+                <f:convertDateTime pattern="yyyy年MM月dd日" />
+            </h:outputText>            
+
+        </h:panelGrid>
+        
+        <h:panelGrid columns="2" cellspacing="0" rules="all" border="1"
+             headerClass="head" columnClasses="col1, col2">
+            
+            <f:facet name="header">ご注文情報</f:facet>
+            
+            <h:outputLabel value="商品コード：" />
+            <h:outputText value="#{custInfo.item_cd}" />
+            
+            <h:outputLabel value="商品名：" />
+            <h:outputText value="#{custInfo.item_nm}" />
+
+            <h:outputLabel value="商品単価（税抜き）：" />
+            <h:outputText value="#{custInfo.price}">
+                <f:convertNumber type="currency" locale="ja_JP" />
+            </h:outputText>
+
+            <h:outputLabel value="数量：" />
+            <h:outputText value="#{custInfo.quantity}"></h:outputText>
+
+            <h:outputLabel value="ご請求金額（税込）：" />
+            <h:outputText value="#{custInfo.totalPriceValue}">
+                <f:convertNumber type="currency" locale="ja_JP" />
+            </h:outputText>  
+            
+        </h:panelGrid>
+
+        <h:panelGrid columns="2" cellspacing="0" rules="all" border="1"
+             headerClass="head" columnClasses="col1, col2">
+            
+            <f:facet name="header">お客様アンケート</f:facet>
+            
+            <h:outputLabel value="お客様ご趣味：" />
+            <h:outputText value="#{custInfo.hobbyValue}" />
+            
+            <h:outputLabel value="好きなスポーツ：" />
+            <h:outputText value="#{custInfo.sportsValue}" />
+
+            <h:outputLabel value="行ってみたい旅行先（国内）" />
+            <h:outputText value="#{custInfo.domesticValue}" />
+
+            <h:outputLabel value="行ってみたい旅行先（海外）" />
+            <h:outputText value="#{custInfo.abroadValue}" />
+            
+            <h:outputLabel value="好きな音楽" />
+            <h:outputText value="#{custInfo.musicValue}" />
+
+            <h:outputLabel value="好きなゲーム" />
+            <h:outputText value="#{custInfo.gameValue}" />
+
+            <h:outputLabel value="よくするショッピング" />
+            <h:outputText value="#{custInfo.shoppingValue}" />
+
+        </h:panelGrid>
+        <hr />
+        <h:link outcome="input.xhtml">[入力画面に戻る]</h:link>
+        <h:link outcome="index.xhtml">[トップページに戻る]</h:link>
+    </h:body>
+</html>
+

@@ -1,0 +1,185 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+    <h:head>
+        <title>TK_Ex_MSR_Shopping</title>
+        <h:outputStylesheet library="css" name="style.css" />
+    </h:head>
+    <h:body>
+        <h2>MSRショッピング</h2>
+        <hr />
+        <h:form>
+            <h:panelGrid columns="3">
+                <h:outputLabel class="title" value="お客様情報" /><h:outputLabel /><h:outputLabel />
+                
+                <h:outputLabel value="名前：" />
+                <h:inputText id="name" value="#{custInfo.name}" size="40"
+                             required="true" requiredMessage="名前を入力してください。">
+                    <f:validateLength minimum="2" maximum="20" />
+                </h:inputText>
+                <h:message for="name" errorClass="err" />
+                
+                <h:outputLabel value="住所１：" />
+                <h:selectOneMenu id="ads1" value="#{custInfo.ads1}"
+                                 required="true" requiredMessage="住所１を選択してください。">
+                    <f:selectItem itemLabel="--- 住所１を選択してください。 ---" noSelectionOption="true" />
+                    <f:selectItems value="#{custInfo.adsList}" />
+                </h:selectOneMenu>
+                <h:message for="ads1" errorClass="err" />
+
+                <h:outputLabel value="住所２：" />
+                <h:inputText id="ads2" value="#{custInfo.ads2}" size="40"
+                             required="true" requiredMessage="住所２を入力してください。">
+                    <f:validateLength minimum="2" maximum="40" />
+                </h:inputText>
+                <h:message for="ads2" errorClass="err" />
+                
+                <h:outputLabel value="性別：" />
+                <h:selectOneRadio id="gender" value="#{custInfo.gender}"
+                                  required="true" requiredMessage="性別を選択してください。">
+                    <f:selectItem itemLabel="男性" itemValue="男" />
+                    <f:selectItem itemLabel="女性" itemValue="女" />
+                </h:selectOneRadio>
+                <h:message for="gender" errorClass="err" />
+                
+                <h:outputLabel value="血液型：" />
+                <h:selectOneMenu id="b_type" value="#{custInfo.b_type}"
+                                 required="true" requiredMessage="血液型を選択してください。">
+                    <f:selectItem itemLabel="--- 血液型を選択してください ---" noSelectionOption="true" />
+                    <f:selectItem itemValue="A型" />
+                    <f:selectItem itemValue="B型" />
+                    <f:selectItem itemValue="O型" />
+                    <f:selectItem itemValue="AB型" />
+                </h:selectOneMenu>
+                <h:message for="b_type" errorClass="err" />
+
+                <h:outputLabel value="電話番号：" />
+                <h:inputText id="phone" value="#{custInfo.phone}" size="40"
+                             required="true" requiredMessage="電話番号を入力してください。">
+                    <f:validateRegex pattern="^(070|080|090)-\d{4}-\d{4}" />
+                    <!-- 
+                    電話番号の正規表現としては、様々な書き方があるが、例として以下の書き方などもある
+                    ①：pattern="^0[7|8|9]0-\d{4}-\d{4}"
+                    ②：pattern="^0[7-9]0-\d{4}-{4}"
+                    -->
+                </h:inputText>
+                <h:message for="phone" errorClass="err" />
+
+                <h:outputLabel value="生年月日：" />
+                <h:inputText id="b_date" value="#{custInfo.b_date}" size="40"
+                             required="true" requiredMessage="生年月日を入力してください。">
+                    <f:convertDateTime pattern="yyyy/M/d" />
+                </h:inputText>
+                <h:message for="b_date" errorClass="err" />
+
+                
+                <h:outputLabel class="title" value="ご注文情報" /><h:outputLabel /><h:outputLabel />
+                
+                <h:outputLabel value="商品コード：" />
+                <h:inputText id="item_cd" value="#{custInfo.item_cd}"
+                             required="true" requiredMessage="商品コードを入力してください。" />
+                <h:message for="item_cd" errorClass="err" />
+                
+                <h:outputLabel value="商品名：" />
+                <h:inputText id="item_nm" value="#{custInfo.item_nm}"
+                             required="true" requiredMessage="商品名を入力してください。" />
+                <h:message for="item_nm" errorClass="err" />
+                
+                <h:outputLabel value="商品単価：" />
+                <h:inputText id="price" value="#{custInfo.price}"
+                             required="true" requiredMessage="商品単価を入力してください。" />
+                <h:message for="price" errorClass="err" />
+                
+                <h:outputLabel value="数量：" />
+                <h:inputText id="quantity" value="#{custInfo.quantity}"
+                             required="true" requiredMessage="数量を入力してください。" />
+                <h:message for="quantity" errorClass="err" />
+                
+                <h:outputLabel class="title" value="お客様アンケート" /><h:outputLabel /><h:outputLabel />
+                
+                <h:outputLabel value="趣味は？" />
+                <h:selectManyCheckbox id="hobby" value="#{custInfo.hobby}"
+                    required="true" requiredMessage="趣味を選択してください。">
+                    <f:selectItems value="#{custInfo.hobbyList}" />
+                </h:selectManyCheckbox>
+                <h:message for="hobby" errorClass="err" />
+                
+                <h:outputLabel value="好きなスポーツは？" />
+                <h:selectManyCheckbox id="sports" value="#{custInfo.sports}"
+                                      required="true" requiredMessage="スポーツを選択してください。">
+                    <f:selectItem itemValue="野球" />
+                    <f:selectItem itemValue="サッカー" />
+                    <f:selectItem itemValue="陸上" />
+                    <f:selectItem itemValue="水泳" />
+                    <f:selectItem itemValue="テニス" />
+                    <f:selectItem itemValue="その他" />
+                </h:selectManyCheckbox>
+                <h:message for="sports" errorClass="err" />
+                
+                <h:outputLabel value="行ってみたい旅行先は？" /><h:outputLabel /><h:outputLabel />
+                
+                <h:outputLabel value="（国内）" />
+                <h:selectManyCheckbox id="domestic" value="#{custInfo.domestic}"
+                                      required="true" requiredMessage="旅行先（国内）を選択してください。">
+                    <f:selectItem itemLabel="北海道" itemValue="10" />
+                    <f:selectItem itemLabel="東北" itemValue="20" />
+                    <f:selectItem itemLabel="上越・信越" itemValue="30" />
+                    <f:selectItem itemLabel="関東" itemValue="40" />
+                    <f:selectItem itemLabel="東海" itemValue="50" />
+                    <f:selectItem itemLabel="関西・近畿" itemValue="60" />
+                    <f:selectItem itemLabel="北陸" itemValue="70" />
+                    <f:selectItem itemLabel="中国・四国" itemValue="80" />
+                    <f:selectItem itemLabel="九州・沖縄" itemValue="90" />
+                </h:selectManyCheckbox>
+                <h:message for="domestic" errorClass="err" />
+
+                <h:outputLabel value="（海外）" />
+                <h:selectManyCheckbox id="abroad" value="#{custInfo.abroad}"
+                    required="true" requiredMessage="旅行先（海外）を選択してください。">
+                    <f:selectItems value="#{custInfo.abroadList}" />
+                </h:selectManyCheckbox>
+                <h:message for="abroad" errorClass="err" />
+
+
+                
+                <h:outputLabel value="好きな音楽のジャンルは？" />
+                <h:selectManyCheckbox id="music" value="#{custInfo.music}"
+                                      required="true" requiredMessage="音楽を選択してください。">
+                    <f:selectItem itemValue="POPS" itemLabel="ポップス" />
+                    <f:selectItem itemValue="J-POP" itemLabel="J-ポップ" />
+                    <f:selectItem itemValue="K-POP" itemLabel="K-ポップ" />
+                    <f:selectItem itemValue="ROCK" itemLabel="ロック" />
+                    <f:selectItem itemValue="HR/HM" itemLabel="ハードロック・ヘビーメタル" />
+                    <f:selectItem itemValue="JAZZ" itemLabel="ジャズ・フュージョン" />
+                    <f:selectItem itemValue="RB" itemLabel="RB・レゲエ" />
+                    <f:selectItem itemValue="SONG" itemLabel="歌謡曲・演歌" />
+                    <f:selectItem itemValue="CLASSIC" itemLabel="クラシック" />
+                    <f:selectItem itemValue="OTHER" itemLabel="その他" />
+                </h:selectManyCheckbox>
+                <h:message for="music" errorClass="err" />
+
+                <h:outputLabel value="好きなゲームのジャンルは？" />
+                <h:selectManyCheckbox id="game" value="#{custInfo.game}"
+                    required="true" requiredMessage="ゲームを選択してください。">
+                    <f:selectItems value="#{custInfo.gameList}" />
+                </h:selectManyCheckbox>
+                <h:message for="game" errorClass="err" />
+
+                <h:outputLabel value="よくするショッピングは？" />
+                <h:selectManyListbox id="shopping" value="#{custInfo.shopping}"
+                    required="true" requiredMessage="ショッピングを選択してください。"  >
+                    <f:selectItems value="#{custInfo.shoppingList}" />
+                </h:selectManyListbox>
+                <h:message for="shopping" errorClass="err" />
+                
+                
+                
+            </h:panelGrid>
+            <hr />
+            <h:commandButton value="送信" action="#{custInfo.showResult()}" />
+        </h:form>
+    </h:body>
+</html>
+
